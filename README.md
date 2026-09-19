@@ -1,4 +1,4 @@
-# AI 前沿日报
+# AI Hot 日报
 
 每日自动更新的 AI 官方工程资讯看板：只收 Anthropic / OpenAI / Google / xAI 等厂商官方一手的工程长文、发布动态与 agent 论文，自演进方向优先。
 
