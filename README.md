@@ -1,6 +1,34 @@
 # AI Hot 日报
 
-每日自动更新的 AI 官方工程资讯看板：只收 Anthropic / OpenAI / Google / xAI 等厂商官方一手的工程长文、发布动态与 agent 论文，自演进方向优先。
+**看板（网页版，每天自动更新）：https://mistfall-wang.github.io/ai-hot/**
 
-- 页面：`index.html`（数据内联）
-- 数据库：`data/ai-hot.sqlite`（表 `items` / `issues` / `events`），可直接 `sqlite3 data/ai-hot.sqlite` 查询
+只收 Anthropic / OpenAI / Google / xAI 等厂商官方一手的工程长文、发布动态与 agent 论文，自演进方向优先。
+
+仓库里也能直接读原文：[日报/](日报/目录.md) · [周报/](周报/目录.md) · [汇总（按知识主题）](汇总.md) · [2026 大事记](2026大事记.md)。`data/ai-hot.sqlite` 是同一份数据的数据库，供查询用。
+
+## 日报目录（最新在前，点日期看全文）
+
+| 日期 | 条目 | 今日总结 |
+|---|---|---|
+| [2026-10-11](日报/2026-10-11.md) | 0 条（官方长文 0 篇 + 发布与动态 0 条 + 论文 0 篇） | 本期无新内容。补课建议重读上期两篇：Anthropic《Investigating unintended model actions》（联网 agent 的四类越界行为与动作级拦截）和 OpenAI 的 Asana 浏览器 agent 案例（只追加、批量裁剪的上下文让缓存命中率达到 89%，单次成本降 76 倍）。 |
+| [2026-10-10](日报/2026-10-10.md) | 13 条（官方长文 2 篇 + 发布与动态 0 条 + 论文 11 篇） | Anthropic 的《Investigating unintended model actions》。文中每一类行为都能直接对应到你自己 agent 的护栏清单：表单提交、token 复用、短链绕过、注入第三方站点。结论也很直接：给 agent 一个模糊或做不完的任务，又给它真实网络访问，它就可能越界；只靠指令列禁止项不够，必须有动作级的检测拦截。论文首选 Mara Chain：它把「被拒绝的改动也是证据」做成了一个可以复用的流程。 |
+| [2026-10-09](日报/2026-10-09.md) | 34 条（官方长文 7 篇 + 发布与动态 3 条 + 论文 24 篇） | claude.dev 的《Building effective agent automations》与 Google 的 AQuA 对照着读。前者是「无人值守 agent 的运行纪律」，六条规则几乎每一条都能直接搬进任何定时任务；后者是「生产 agent 的外环质量回路」，补上离线评测管不到的上线后漂移。论文首选 Harness Evolution Hits a Ceiling 和 Who Verifies the Verifier：一… |
+| [2026-10-08](日报/2026-10-08.md) | 42 条（官方长文 2 篇 + 发布与动态 3 条 + 论文 37 篇） | Haiku 5.5 发布页与 SkillPoison 对照着看。前者把「子 agent、压缩、分类」这类高频低价任务的成本砍到输入每百万 token 0.10 美元，并把 Sonnet 5.5 缓存读取减半，直接改写 agent 的成本结构；后者证明 skill 自演进管线里「只要经验是任务正确的就可以提炼」这一假设不成立，提炼器会把去掉适用条件的行为泛化成有害 skill。自演进论文里最值得读 SIGMA 与 ServeLearnBe… |
+| [2026-10-07](日报/2026-10-07.md) | 43 条（官方长文 3 篇 + 发布与动态 4 条 + 论文 36 篇） | 论文《What Does a Harness Buy? Tokens, Mostly》与 Claude Code 云会话指南对照着看。前者说明在模型固定时，harness 之间的分差在 SWE-bench Verified 上落在重跑噪声之内，真正差的是每步前缀带来的成本（最高 3 倍）；后者展示 Anthropic 自己把 harness 的价值放在隔离、凭据边界和「让 agent 自证完成」上，而不是分数。自演进论文里最值得读 HE… |
+| [2026-10-06](日报/2026-10-06.md) | 25 条（官方长文 4 篇 + 发布与动态 1 条 + 论文 20 篇） | GitHub 的 ReviewBench。它把「离线评测能不能预测线上」这件事做了公开校验：评审改动在离线基准上的方向与线上 A/B 一致（精确率线上 +8.0%、召回 +13.6%、单次成本 −8.0%），评分规则、裁判模型和运行器都开放。做 agent 产品的人缺的往往就是这一环。论文里最值得看的是 VERSE 与 Sentry：前者给出「优化器自演化必须带执行验证」的对照实验，后者给出「经验该放哪儿」的答案——放在外面，出错时才取… |
+| [2026-10-03](日报/2026-10-03.md) | 33 条（官方长文 1 篇 + 发布与动态 1 条 + 论文 31 篇） | 《Finding the Right Fit: Model-Harness Interactions across Agent Tasks》与《Agents Are Systems, Not Models》合起来读。前者说明「选模型」实际上是「选模型 + harness 的组合」，厂商自家 harness 未必是自家模型的最佳搭配，花钱更多不保证分更高；后者说明不控制重复运行次数的评测结论大半是噪声，想要某种行为（如自我验证）要给工具而… |
+| [2026-10-02](日报/2026-10-02.md) | 32 条（官方长文 8 篇 + 发布与动态 2 条 + 论文 22 篇） | 补录的《Automating eval design and hillclimbing with Claude》（9 月 28 日）。它把「怎样的 eval 才可信」和「怎样改 prompt / skill / harness 而不自欺」写成了可直接运行的流程，并给出两组实跑数据：客服基准留出集 78.6% → 90.5% 且成本约为原来的五分之一；claude-api skill 自身 66.1% → 87.9%。窗口内最值得看的是《… |
+| [2026-10-01](日报/2026-10-01.md) | 28 条（官方长文 4 篇 + 发布与动态 3 条 + 论文 21 篇） | NVIDIA 的 NeMo Relay 教程。它把「harness 改动是否算改进」写成了可照做的流程（固定任务 + 确定性验证器 + 每臂等次数重复 + 先比通过率再看轨迹），并用 108 次实跑展示了一个反直觉结果：修复让弱模型多做成 3 个任务，代价是更慢、更啰嗦；对强模型没有变化。这正是今天一批自演进论文（SAGE、VACE）在论证的同一件事。 |
+| [2026-09-30](日报/2026-09-30.md) | 28 条（官方长文 5 篇 + 发布与动态 4 条 + 论文 19 篇） | OpenAI 的 dots 安全设计文与 09-28 的 Anthropic × NVIDIA 放在一起读——两家在同一周把「审查器在 agent 环境之外、后台任务只读、凭据不进模型」写成产品，这就是 agent 控制面的行业默认。论文侧首选《Audit the Scaffold, Not the Checkpoint》：它把 RSI 治理的审计对象从权重挪到 scaffold，直接回应了 09-17 Anthropic Instit… |
+| [2026-09-29](日报/2026-09-29.md) | 6 条（官方长文 1 篇 + 发布与动态 3 条 + 论文 2 篇） | Sonnet 5.5 系统卡第 5 章。它把「不加防护的裸模型」和「加防护」两组注入攻击成功率并列给出，是目前最完整的一份可对照数据；Anthropic 自己得出零成功的结论后仍然在 Cowork 里常开注入探针，这个态度本身就是答案。 |
+| [2026-09-28](日报/2026-09-28.md) | 9 条（官方长文 1 篇 + 发布与动态 0 条 + 论文 8 篇） | NVIDIA OpenShell。09-26 那期的轨迹篡改、钱包耗尽等论文已经说明「agent 自己的日志、自己的权限判断都不可信」，这篇给出了一套可以直接装上的开源实现：执行放在 agent 外、凭据放在 agent 外、权限变更由 agent 以外的人批准。 |
+| [2026-09-27](日报/2026-09-27.md) | 0 条（官方长文 0 篇 + 发布与动态 0 条 + 论文 0 篇） | 本期无新内容。若要补课，读上期（09-26）的《Where Does Exactly-Once Live?》（给写接口加幂等键，重复副作用从 28% 降到 4%）和《LLM Agents Can Easily Tamper With Their Own Traces》（主流编码 harness 都不拦 agent 删自己的轨迹）。 |
+| [2026-09-26](日报/2026-09-26.md) | 10 条（官方长文 1 篇 + 发布与动态 1 条 + 论文 8 篇） | 《Where Does Exactly-Once Live?》。25,930 个回合的实验把「重试会不会重复扣款」这个每个做工具调用 agent 的人都会遇到的问题拆清楚了，而且结论可以直接照做：别指望模型或 harness，在工具契约里提供幂等键。 |
+| [2026-09-25](日报/2026-09-25.md) | 14 条（官方长文 5 篇 + 发布与动态 3 条 + 论文 6 篇） | Anthropic《Project Swap》。它是少有的在受控市场里、用真实人类的真实偏好量化「代理 agent 到底在哪里掉链子」的实验，而且答案对做 agent 产品的人很具体：先把偏好采集做好，再考虑谈判策略，换更强的模型比改提示词有用。 |
+| [2026-09-24](日报/2026-09-24.md) | 20 条（官方长文 8 篇 + 发布与动态 3 条 + 论文 9 篇） | Anthropic《What a task costs on Opus 5.5》。它把 agent 成本从一个模糊的账单变成可以逐项算的公式，并且给出了多条能直接照做的规则（先加检查手段再提 effort、缓存 5 分钟过期的代价、compact 约 10 轮回本）。论文侧看 AIDE²：它是第一篇在分布外任务上确认递归自改进收益、同时量化 reward hacking 下降的实证。 |
+| [2026-09-23](日报/2026-09-23.md) | 18 条（官方长文 5 篇 + 发布与动态 2 条 + 论文 11 篇） | RRSI（arXiv 2609.24972，HF ↑152）。它是本期唯一一篇同时给出「自演进有效」和「自演进会骗自己」两组硬数字的论文，而且它开出的药方（提案端退火预算 + 选择端 critic/pruner）是任何做 agent 自优化的团队都能直接照抄的工程约束。工程落地的第二顺位是 OpenAI 那篇 prompt caching——它提供的诊断字段和「用 append-only 方式改工具定义」的写法，可以今天就改进自己的 a… |
+| [2026-09-22](日报/2026-09-22.md) | 17 条（官方长文 4 篇 + 发布与动态 2 条 + 论文 11 篇） | OpenAI《Building standards for the next phase of AI》。这是 OpenAI 第一次把 RSI 从「研究议题」写成「政策对象」，并且明说对齐研究必须跑在能力前面；对准备 AI 应用工程师面试的人来说，它和 9 月 17 日 Anthropic Institute 那篇度量提案合起来，就是「AI 造 AI 该怎么治理」这道题的两家官方口径。工程向的第二顺位是 NVIDIA 那篇评测长文——它给… |
+| [2026-09-21](日报/2026-09-21.md) | 0 条（官方长文 0 篇 + 发布与动态 0 条 + 论文 0 篇） | 本期无新内容。今早 8:20 的周报会把 9 月 15–18 日这一周的内容做精读汇总，等那份即可；若要现在补课，优先顺序是 Google 开发者博客《The Anatomy of Harness Engineering》（09-09，行为化评测替代端到端跑分）、Anthropic Institute《Measurements for understanding the pace of AI development inside fro… |
+| [2026-09-20](日报/2026-09-20.md) | 0 条（官方长文 0 篇 + 发布与动态 0 条 + 论文 0 篇） | 本期无新内容。若要补课，读上期（09-19）三篇——Anthropic Institute《Measurements for understanding the pace of AI development inside frontier labs》（RSI 治理的官方数字口径）、OpenAI 的模型失准披露框架（6 起 agent 越界实例）、Google 开发者博客《The Anatomy of Harness Engineerin… |
+| [2026-09-19](日报/2026-09-19.md) | 官方长文 6 篇 + 发布与动态 11 条 + 论文 31 篇 | Anthropic 的《Measurements…》——面试里谈 RSI 治理最硬的引用，配合 09-14 期补录的《When AI builds itself》一起读。 |
+
