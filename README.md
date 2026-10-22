@@ -10,6 +10,7 @@
 
 | 日期 | 条目 | 今日总结 |
 |---|---|---|
+| [2026-10-23](日报/2026-10-23.md) |  | claude.com《Building agents: When to fold subagents into your main agent loop》。多 agent 架构是 AI 应用面试的高频话题，这篇给了 Anthropic 一线的反向结论：多家企业部署里，「单 agent + skills」在质量上常常胜过「一个大 prompt」和「子 agent」两种设计，成本和延迟也更低，有客户换成单循环后运行速度快了约 2 倍。文章还… |
 | [2026-10-22](日报/2026-10-22.md) |  | OpenAI《How we built ChatGPT's novel ad stack》。它把一套广告系统做成了「LLM 编排器 + 工具调用」的 agent，和主回答链路完全分开跑，超时就不出广告。文末还给出了一个生产级自改进闭环：最强的模型评估整条链路，再去训练负责编排的小模型。上线不到 200 天，年化收入超过 10 亿美元。这是本期唯一一篇讲清楚「agent 怎么放进对延迟敏感的生产系统」的长文。 |
 | [2026-10-19](日报/2026-10-19.md) |  | Anthropic 的公益基金公告。这不是工程内容，但它给出了一个算得清的数字：加上联合创始人捐出 80% 股权的承诺和员工股权捐赠配捐，大约 20% 的 Anthropic 股份会用于公益。 |
 | [2026-10-18](日报/2026-10-18.md) | 0 条（官方长文 0 篇 + 发布与动态 0 条 + 论文 0 篇） | 本期无新内容。补课建议重读上期的《How the Claude Code team does code review》和《How employment is changing at Anthropic》，两篇合起来是这周对「agent 时代人的注意力怎么分配」最完整的一手数据，周一周报会做精读。 |
