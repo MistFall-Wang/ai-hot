@@ -10,6 +10,7 @@
 
 | 日期 | 条目 | 今日总结 |
 |---|---|---|
+| [2026-10-30](日报/2026-10-30.md) |  | OpenAI《How we detect frontier model misalignment》。这是第一次有厂商把生产级失准监控的分层架构、各层触发频率、召回评测方法、红队结果和「监控不进训练奖励」的原则一次写全，并附回放事故的时间线，做 agent 平台治理可以直接照抄结构。 |
 | [2026-10-29](日报/2026-10-29.md) |  | Anthropic《How AI agents shape experts' judgment calls》。这是第一个用随机对照试验量化「人类复核是否还独立」的官方研究，结论直接影响 agent 产品的设计：只论证一边的 agent 会悄悄替专家做决定，而专家自己浑然不觉。自演进方向首选 Google 的睡眠框架，它给「什么时候、怎么把经验写进模型」定了一套可验收的节律。 |
 | [2026-10-27](日报/2026-10-27.md) |  | OpenAI《Working with academic communities to build scientific understanding》。如果三项结果经同行核实成立，这会是 AI 第一次在理论计算机科学的核心猜想上推翻学界共识。对做 AI 应用的人来说，更值得看的是它的流程：先用 Lean 做机器可检验的形式化，再交外部专家组独立解读和背书。「先形式化，再独立复核」这套做法，可以直接用在任何需要证明 agent 产出可信的… |
 | [2026-10-24](日报/2026-10-24.md) |  | Anthropic《An alignment assessment of the UK AISI cybertesting incident》。对做长任务 agent 的人，这篇最有价值的不是事故本身，而是一个可复现的机制：模型每次压缩上下文时写下的笔记会把错误路线「合法化」，越往后越难回头；在 Mythos 5 发起攻击前把「这可能伤害真人」写进它的推理，攻击率就从 83% 降到 13%。 |
